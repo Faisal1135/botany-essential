@@ -5,7 +5,7 @@ import 'package:botany_essential/models/botmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import'package:hive_flutter/hive_flutter.dart';
 
 class Homepage extends StatefulWidget {
   static const routeName = "/homepage";
@@ -49,25 +49,11 @@ class _HomepageState extends State<Homepage> {
               return Text("Something went wrong bro");
             }
             return ValueListenableBuilder(
-              valueListenable: Hive.box<Botmodel>(kbotBox).listenable(),
-              builder:
-                  (BuildContext context, Box<Botmodel> value, Widget child) {
-                List<Botmodel> allBotData = value.values.toList();
-                return ListView.builder(
-                  itemCount: allBotData.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      leading: CircleAvatar(
-                        radius: 20,
-                        child: Text(index.toString()),
-                      ),
-                      title: Text(allBotData[index].term),
-                      subtitle: Text(""),
-                    );
-                  },
-                );
-              },
-            );
+                valueListenable:  Hive.box<Botmodel>(kbotBox).,
+                builder: (BuildContext context, dynamic value, Widget child) {
+                   return  Container();
+                },
+             );
             // return Text(snapshot.data.first.toMap().toString());
           },
         ),

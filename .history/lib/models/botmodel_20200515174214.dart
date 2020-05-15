@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
-part 'botmodel.g.dart';
+// part 'botmodel.g.dart';
 
 @HiveType(typeId: 1)
 class Botmodel {
@@ -17,7 +17,7 @@ class Botmodel {
   @HiveField(3)
   List innerLink;
 
-  @HiveField(4)
+  @HiveField(3)
   bool isFavorite;
 
   Botmodel(
@@ -31,8 +31,7 @@ class Botmodel {
       : id = Uuid().v4(),
         term = json["term"] as String,
         meaning = json["meaning"],
-        innerLink = json["inner_link"],
-        isFavorite = false;
+        innerLink = json["inner_link"];
 
   Map toMap() {
     return {

@@ -62,7 +62,7 @@ class _HomepageState extends State<Homepage> {
                         child: Text(index.toString()),
                       ),
                       title: Text(allBotData[index].term),
-                      subtitle: Text(""),
+                      subtitle: Text(allBotData[index].meaning[0]),
                     );
                   },
                 );

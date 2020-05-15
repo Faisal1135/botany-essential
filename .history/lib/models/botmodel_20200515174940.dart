@@ -17,7 +17,7 @@ class Botmodel {
   @HiveField(3)
   List innerLink;
 
-  @HiveField(4)
+  @HiveField(3)
   bool isFavorite;
 
   Botmodel(

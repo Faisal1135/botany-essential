@@ -61,8 +61,6 @@ class _HomepageState extends State<Homepage> {
                         radius: 20,
                         child: Text(index.toString()),
                       ),
-                      title: Text(allBotData[index].term),
-                      subtitle: Text(""),
                     );
                   },
                 );
