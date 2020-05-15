@@ -75,17 +75,16 @@ class _HomepageState extends State<Homepage> {
                 return ListView.builder(
                   itemCount: allBotData.length,
                   itemBuilder: (BuildContext context, int index) {
+                    final _key = Hive.box<Botmodel>(kbotBox).keyAt(index);
                     return ListTile(
                       onTap: () => Navigator.pushNamed(
                           context, DictItemScreen.routeName,
-                          arguments: allBotData[index]),
+                          arguments: {_key: allBotData[index]}),
                       leading: CircleAvatar(
                         radius: 20,
-                        child: Icon(Icons.toys),
+                        child: Text(index.toString()),
                       ),
-                      title: Hero(
-                          tag: allBotData[index].id,
-                          child: Text(allBotData[index].term)),
+                      title: Text(allBotData[index].term),
                       subtitle: Text(
                         allBotData[index].meaning,
                         maxLines: 4,

@@ -39,7 +39,7 @@ class Searchbar extends SearchDelegate<String> {
         return ListTile(
           onTap: () => Navigator.pushNamed(context, DictItemScreen.routeName,
               arguments: searchlist[index]),
-          leading: Icon(Icons.spa),
+          leading: Icon(Icons.text_fields),
           title: RichText(
             text: TextSpan(
               text: searchlist[index].term.substring(0, query.length),
@@ -71,10 +71,7 @@ class Searchbar extends SearchDelegate<String> {
             itemCount: searchlist.length,
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
-                onTap: () => Navigator.pushNamed(
-                    context, DictItemScreen.routeName,
-                    arguments: searchlist[index]),
-                leading: Icon(Icons.spa),
+                leading: Icon(Icons.text_fields),
                 title: RichText(
                   text: TextSpan(
                     text: searchlist[index].term.substring(0, query.length),

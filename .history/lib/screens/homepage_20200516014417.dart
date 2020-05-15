@@ -76,12 +76,9 @@ class _HomepageState extends State<Homepage> {
                   itemCount: allBotData.length,
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
-                      onTap: () => Navigator.pushNamed(
-                          context, DictItemScreen.routeName,
-                          arguments: allBotData[index]),
                       leading: CircleAvatar(
                         radius: 20,
-                        child: Icon(Icons.toys),
+                        child: Icon(Icons.eco),
                       ),
                       title: Hero(
                           tag: allBotData[index].id,

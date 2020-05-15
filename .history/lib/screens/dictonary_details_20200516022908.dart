@@ -43,7 +43,7 @@ class DictItemScreen extends StatelessWidget {
                   onPressed: () async {
                     final botobj = value.get(dict.term);
                     botobj.isFavorite = !botobj.isFavorite;
-                    await value.put(botobj.term, botobj);
+                    value.put(botobj.term, botobj);
                   }),
               SizedBox(height: 20),
               Container(

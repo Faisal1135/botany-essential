@@ -77,15 +77,14 @@ class _HomepageState extends State<Homepage> {
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
                       onTap: () => Navigator.pushNamed(
-                          context, DictItemScreen.routeName,
-                          arguments: allBotData[index]),
+                        context,
+                        DictItemScreen.routeName,
+                      ),
                       leading: CircleAvatar(
                         radius: 20,
-                        child: Icon(Icons.toys),
+                        child: Text(index.toString()),
                       ),
-                      title: Hero(
-                          tag: allBotData[index].id,
-                          child: Text(allBotData[index].term)),
+                      title: Text(allBotData[index].term),
                       subtitle: Text(
                         allBotData[index].meaning,
                         maxLines: 4,
