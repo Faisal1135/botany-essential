@@ -27,6 +27,10 @@ class Botmodel {
       this.id,
       this.isFavorite = false});
 
+  void toggleFav() {
+    isFavorite != isFavorite;
+  }
+
   Botmodel.fromJson(Map<String, dynamic> json)
       : id = Uuid().v4(),
         term = json["term"] as String,

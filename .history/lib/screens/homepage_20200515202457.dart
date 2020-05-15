@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:botany_essential/screens/dictonary_details.dart';
-
 import '../constant.dart';
 import '../models/botmodel.dart';
 import '../screens/search_bar.dart';
@@ -70,30 +68,13 @@ class _HomepageState extends State<Homepage> {
                 return ListView.builder(
                   itemCount: allBotData.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final _key = Hive.box<Botmodel>(kbotBox).keyAt(index);
                     return ListTile(
-                      onTap: () => Navigator.pushNamed(
-                          context, DictItemScreen.routeName,
-                          arguments: {_key: allBotData[index]}),
                       leading: CircleAvatar(
                         radius: 20,
                         child: Text(index.toString()),
                       ),
                       title: Text(allBotData[index].term),
-                      subtitle: Text(
-                        allBotData[index].meaning,
-                        maxLines: 4,
-                      ),
-                      trailing: allBotData[index].isFavorite
-                          ? IconButton(
-                              icon: Icon(Icons.favorite),
-                              onPressed: () async =>
-                                  await togglefavorite(index))
-                          : IconButton(
-                              icon: Icon(Icons.favorite_border),
-                              onPressed: () async {
-                                await togglefavorite(index);
-                              }),
+                      subtitle: Text(allBotData[index].meaning),
                     );
                   },
                 );
@@ -104,17 +85,5 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
     );
-  }
-
-  Future<void> togglefavorite(int index) async {
-    final botbox = Hive.box<Botmodel>(kbotBox);
-    final key = botbox.keyAt(index);
-    final bot = botbox.get(key);
-    if (bot.isFavorite) {
-      bot.isFavorite = false;
-    } else {
-      bot.isFavorite = true;
-    }
-    await botbox.put(key, bot);
   }
 }

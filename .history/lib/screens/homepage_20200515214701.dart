@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:botany_essential/screens/dictonary_details.dart';
-
 import '../constant.dart';
 import '../models/botmodel.dart';
 import '../screens/search_bar.dart';
@@ -70,11 +68,7 @@ class _HomepageState extends State<Homepage> {
                 return ListView.builder(
                   itemCount: allBotData.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final _key = Hive.box<Botmodel>(kbotBox).keyAt(index);
                     return ListTile(
-                      onTap: () => Navigator.pushNamed(
-                          context, DictItemScreen.routeName,
-                          arguments: {_key: allBotData[index]}),
                       leading: CircleAvatar(
                         radius: 20,
                         child: Text(index.toString()),
