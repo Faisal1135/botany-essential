@@ -35,7 +35,7 @@ class DictItemScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Colors.green.shade800,
+      backgroundColor: Colors.pink.shade800,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -48,26 +48,18 @@ class DictItemScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
                   child: Column(
                     children: <Widget>[
                       Stack(
                         alignment: Alignment.center,
                         children: <Widget>[
-                          Hero(
-                            tag: "${dict.id}",
-                            child: Container(
-                              child: FaIcon(
-                                FontAwesomeIcons.tree,
-                                color: Colors.green,
-                                size: 100,
+                          Container(
+                            child: FittedBox(
+                              child: Text(
+                                dict.term,
+                                style: ktermTextStyle,
                               ),
-                            ),
-                          ),
-                          FittedBox(
-                            child: Text(
-                              dict.term,
-                              style: ktermTextStyle,
                             ),
                           ),
                         ],

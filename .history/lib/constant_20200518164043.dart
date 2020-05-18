@@ -7,7 +7,7 @@ final ktermTextStyle = GoogleFonts.zillaSlab(
 
 final kMeaningStyle = GoogleFonts.zillaSlab(
   color: Colors.white,
-  fontSize: 16,
+  fontSize: 20,
   fontStyle: FontStyle.italic,
 );
 

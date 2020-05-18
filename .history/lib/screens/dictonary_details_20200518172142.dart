@@ -35,7 +35,7 @@ class DictItemScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Colors.green.shade800,
+      backgroundColor: Colors.pink.shade800,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -59,8 +59,7 @@ class DictItemScreen extends StatelessWidget {
                             child: Container(
                               child: FaIcon(
                                 FontAwesomeIcons.tree,
-                                color: Colors.green,
-                                size: 100,
+                                size: 23,
                               ),
                             ),
                           ),

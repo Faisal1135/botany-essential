@@ -1,6 +1,6 @@
-import './constant.dart';
-import './models/botmodel.dart';
-import './screens/dictonary_details.dart';
+import 'package:botany_essential/constant.dart';
+import 'package:botany_essential/models/botmodel.dart';
+import 'package:botany_essential/screens/dictonary_details.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';

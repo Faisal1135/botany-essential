@@ -48,28 +48,24 @@ class DictItemScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
                   child: Column(
                     children: <Widget>[
-                      Stack(
-                        alignment: Alignment.center,
+                      Row(
                         children: <Widget>[
-                          Hero(
-                            tag: "${dict.id}",
-                            child: Container(
-                              child: FaIcon(
-                                FontAwesomeIcons.tree,
-                                color: Colors.green,
-                                size: 100,
-                              ),
-                            ),
-                          ),
                           FittedBox(
                             child: Text(
                               dict.term,
                               style: ktermTextStyle,
                             ),
                           ),
+                          Hero(
+                              tag: "${dict.id}",
+                              child: FaIcon(
+                                FontAwesomeIcons.tree,
+                                size: 40,
+                                color: Colors.green,
+                              ))
                         ],
                       ),
                       SizedBox(height: 20),

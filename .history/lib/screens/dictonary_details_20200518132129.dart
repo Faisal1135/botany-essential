@@ -1,7 +1,5 @@
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../constant.dart';
-import '../models/botmodel.dart';
+import 'package:botany_essential/constant.dart';
+import 'package:botany_essential/models/botmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:getflutter/components/button/gf_button.dart';
 import 'package:getflutter/getflutter.dart';
@@ -48,29 +46,14 @@ class DictItemScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
                   child: Column(
                     children: <Widget>[
-                      Stack(
-                        alignment: Alignment.center,
-                        children: <Widget>[
-                          Hero(
-                            tag: "${dict.id}",
-                            child: Container(
-                              child: FaIcon(
-                                FontAwesomeIcons.tree,
-                                color: Colors.green,
-                                size: 100,
-                              ),
-                            ),
-                          ),
-                          FittedBox(
-                            child: Text(
-                              dict.term,
-                              style: ktermTextStyle,
-                            ),
-                          ),
-                        ],
+                      FittedBox(
+                        child: Text(
+                          dict.term,
+                          style: ktermTextStyle,
+                        ),
                       ),
                       SizedBox(height: 20),
                       Container(

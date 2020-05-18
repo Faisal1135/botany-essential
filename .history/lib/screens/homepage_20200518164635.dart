@@ -81,15 +81,10 @@ class _HomepageState extends State<Homepage> {
                           context, DictItemScreen.routeName,
                           arguments: allBotData[index]),
                       leading: CircleAvatar(
-                        backgroundColor: Colors.lightGreen,
-                        radius: 30,
-                        child: Hero(
-                          tag: "${allBotData[index].id}",
-                          child: FaIcon(
-                            FontAwesomeIcons.tree,
-                            color: Colors.green,
-                            size: 23,
-                          ),
+                        radius: 20,
+                        child: FaIcon(
+                          FontAwesomeIcons.playstation,
+                          size: 10,
                         ),
                       ),
                       title: Text(allBotData[index].term),
