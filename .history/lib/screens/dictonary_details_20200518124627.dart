@@ -79,12 +79,10 @@ class DictItemScreen extends StatelessWidget {
                 ListView(primary: false, shrinkWrap: true, children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.black45,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                      ),
-                    ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30))),
                     constraints: BoxConstraints(minHeight: 500),
                     child: Column(
                       children: <Widget>[
@@ -116,28 +114,18 @@ class DictItemScreen extends StatelessWidget {
                                       .toList(),
                                 ),
                               ),
-                        Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                'Meaning',
-                                style: kMeaningStyle,
-                                textAlign: TextAlign.start,
-                              ),
-                              SizedBox(
-                                height: 30,
-                              ),
-                              Text(
-                                dict.meaning,
-                                style: kMeaningStyle,
-                                textAlign: TextAlign.justify,
-                              ),
-                            ],
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 30,
-                            vertical: 30,
+                        Card(
+                          elevation: 0.0,
+                          color: Colors.grey.shade200,
+                          child: Container(
+                            child: Text(
+                              dict.meaning,
+                              style: KMeaningStyle,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 30,
+                              vertical: 10,
+                            ),
                           ),
                         ),
                       ],

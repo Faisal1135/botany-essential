@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 const String kbotBox = "botany-box";
 const ktermTextStyle =
-    TextStyle(color: Colors.white, fontSize: 29, fontWeight: FontWeight.w700);
+    TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700);
 const kMeaningStyle = TextStyle(
-  color: Colors.white,
-  fontSize: 15,
+  color: Colors.black,
+  fontSize: 20,
   fontStyle: FontStyle.italic,
 );

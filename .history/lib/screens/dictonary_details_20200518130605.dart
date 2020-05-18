@@ -118,7 +118,7 @@ class DictItemScreen extends StatelessWidget {
                               ),
                         Container(
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Text(
                                 'Meaning',

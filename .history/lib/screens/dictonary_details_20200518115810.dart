@@ -23,14 +23,7 @@ class DictItemScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var dict = ModalRoute.of(context).settings.arguments as Botmodel;
-    if (dict == null) {
-      dict = Botmodel(
-          term: "No content",
-          meaning: "Please Search for your keyword",
-          innerLink: [],
-          isFavorite: false);
-    }
+    final dict = ModalRoute.of(context).settings.arguments as Botmodel;
 
     return Scaffold(
       backgroundColor: Colors.pinkAccent.shade400,
@@ -78,15 +71,9 @@ class DictItemScreen extends StatelessWidget {
                 ),
                 ListView(primary: false, shrinkWrap: true, children: [
                   Container(
-                    decoration: BoxDecoration(
-                      color: Colors.black45,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                      ),
-                    ),
-                    constraints: BoxConstraints(minHeight: 500),
-                    child: Column(
+                    color: Colors.white,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         dict.innerLink == null
                             ? Container()
@@ -117,28 +104,8 @@ class DictItemScreen extends StatelessWidget {
                                 ),
                               ),
                         Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                'Meaning',
-                                style: kMeaningStyle,
-                                textAlign: TextAlign.start,
-                              ),
-                              SizedBox(
-                                height: 30,
-                              ),
-                              Text(
-                                dict.meaning,
-                                style: kMeaningStyle,
-                                textAlign: TextAlign.justify,
-                              ),
-                            ],
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 30,
-                            vertical: 30,
-                          ),
+                          child: Text(dict.meaning),
+                          padding: const EdgeInsets.all(16),
                         ),
                       ],
                     ),

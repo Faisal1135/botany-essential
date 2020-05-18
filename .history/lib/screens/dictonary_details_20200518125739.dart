@@ -117,23 +117,9 @@ class DictItemScreen extends StatelessWidget {
                                 ),
                               ),
                         Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                'Meaning',
-                                style: kMeaningStyle,
-                                textAlign: TextAlign.start,
-                              ),
-                              SizedBox(
-                                height: 30,
-                              ),
-                              Text(
-                                dict.meaning,
-                                style: kMeaningStyle,
-                                textAlign: TextAlign.justify,
-                              ),
-                            ],
+                          child: Text(
+                            dict.meaning,
+                            style: kMeaningStyle,
                           ),
                           padding: EdgeInsets.symmetric(
                             horizontal: 30,
