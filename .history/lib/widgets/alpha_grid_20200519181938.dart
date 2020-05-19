@@ -32,7 +32,8 @@ class Griditem extends StatelessWidget {
                 style: ktermTextStyle,
               ),
               Text(
-                "${HelperFunction.findWithAlpha(title).length} words ",
+                HelperFunction.findWithAlpha(title).length.toString(),
+                style: ktermTextStyle,
               ),
             ],
           ),

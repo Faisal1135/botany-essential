@@ -1,6 +1,4 @@
-import 'package:botany_essential/screens/alpha_list.dart';
 import 'package:flutter/material.dart';
-import '../screens/favorite_page.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -10,21 +8,9 @@ class AppDrawer extends StatelessWidget {
         children: <Widget>[
           _createHeader(),
           _createDrawerItem(
-            icon: Icons.home,
-            text: "Full Dicotary",
-            onTap: () => Navigator.pushNamed(context, '/'),
-          ),
-          _createDrawerItem(
-            icon: Icons.text_format,
-            text: "Alphabetic order",
-            onTap: () =>
-                Navigator.pushNamed(context, ALphaListScreen.routeName),
-          ),
-          _createDrawerItem(
-            icon: Icons.favorite,
-            text: "Favorite",
-            onTap: () => Navigator.pushNamed(context, FavoritePage.routeName),
-          ),
+              icon: Icons.home,
+              text: "Homepage",
+              onTap: () => Navigator.pushNamed(context, '/')),
         ],
       ),
     );
@@ -36,17 +22,17 @@ class AppDrawer extends StatelessWidget {
       padding: EdgeInsets.zero,
       decoration: BoxDecoration(
           image: DecorationImage(
-              fit: BoxFit.fill, image: AssetImage('assets/images/plant2.jpg'))),
+              fit: BoxFit.fill, image: AssetImage('assets/images/plant1.jpg'))),
       child: Stack(
         children: <Widget>[
           Positioned(
-              bottom: 10.0,
-              right: 16.0,
-              child: Text("Botany \nEssential",
+              bottom: 3.0,
+              left: 16.0,
+              child: Text("Botany Essential",
                   style: TextStyle(
-                      color: Colors.green.shade700,
+                      color: Colors.green,
                       fontSize: 30.0,
-                      fontWeight: FontWeight.w700))),
+                      fontWeight: FontWeight.w500))),
         ],
       ),
     );

@@ -1,4 +1,3 @@
-import 'package:botany_essential/screens/alpha_list.dart';
 import 'package:flutter/material.dart';
 import '../screens/favorite_page.dart';
 
@@ -17,8 +16,7 @@ class AppDrawer extends StatelessWidget {
           _createDrawerItem(
             icon: Icons.text_format,
             text: "Alphabetic order",
-            onTap: () =>
-                Navigator.pushNamed(context, ALphaListScreen.routeName),
+            onTap: () => Navigator.pushNamed(context, '/'),
           ),
           _createDrawerItem(
             icon: Icons.favorite,

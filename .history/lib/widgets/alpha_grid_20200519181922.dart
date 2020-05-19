@@ -25,14 +25,15 @@ class Griditem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(15),
         child: Center(
-          child: Column(
+          child: Row(
             children: <Widget>[
               Text(
                 title.toUpperCase(),
                 style: ktermTextStyle,
               ),
               Text(
-                "${HelperFunction.findWithAlpha(title).length} words ",
+                HelperFunction.findWithAlpha(title).length.toString(),
+                style: ktermTextStyle,
               ),
             ],
           ),

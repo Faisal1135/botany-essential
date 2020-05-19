@@ -82,7 +82,6 @@ class Searchbar extends SearchDelegate<String> {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
                         fontFamily: "Alegreya"),
                     children: [
                       TextSpan(

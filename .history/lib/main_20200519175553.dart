@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => Homepage(),
-        ALphaListScreen.routeName: (context) => ALphaListScreen(),
         FavoritePage.routeName: (context) => FavoritePage(),
         ListAccordingToaAlpha.routeName: (context) => ListAccordingToaAlpha(),
         Homepage.routeName: (context) => Homepage(),

@@ -9,7 +9,7 @@ final kMeaningStyle = TextStyle(
   fontFamily: "Alegreya",
   color: Colors.white,
   fontSize: 16,
-  fontStyle: FontStyle.normal,
+  fontStyle: FontStyle.italic,
 );
 
 const List<String> kalphaList = [

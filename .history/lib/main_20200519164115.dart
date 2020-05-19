@@ -2,7 +2,6 @@ import 'package:botany_essential/screens/alpha_list.dart';
 import 'package:botany_essential/screens/main_screen.dart';
 import 'package:botany_essential/screens/show_list_of_alpha.dart';
 import 'package:google_fonts/google_fonts.dart';
-import './screens/favorite_page.dart';
 
 import './constant.dart';
 import './models/botmodel.dart';
@@ -38,8 +37,6 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => Homepage(),
-        ALphaListScreen.routeName: (context) => ALphaListScreen(),
-        FavoritePage.routeName: (context) => FavoritePage(),
         ListAccordingToaAlpha.routeName: (context) => ListAccordingToaAlpha(),
         Homepage.routeName: (context) => Homepage(),
         DictItemScreen.routeName: (context) => DictItemScreen(),

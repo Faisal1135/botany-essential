@@ -2,7 +2,6 @@ import 'package:botany_essential/constant.dart';
 import 'package:botany_essential/models/botmodel.dart';
 import 'package:botany_essential/screens/dictonary_details.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
 
 class Searchbar extends SearchDelegate<String> {
@@ -63,7 +62,7 @@ class Searchbar extends SearchDelegate<String> {
     // implement buildSuggestions
     final searchlist = Hive.box<Botmodel>(kbotBox)
         .values
-        .where((bot) => bot.term.toLowerCase().startsWith(query.toLowerCase()))
+        .where((bot) => bot.term.startsWith(query))
         .toList();
 
     return query.isEmpty
@@ -75,15 +74,12 @@ class Searchbar extends SearchDelegate<String> {
                 onTap: () => Navigator.pushNamed(
                     context, DictItemScreen.routeName,
                     arguments: searchlist[index]),
-                leading: FaIcon(FontAwesomeIcons.leaf),
+                leading: Icon(Icons.spa),
                 title: RichText(
                   text: TextSpan(
                     text: searchlist[index].term.substring(0, query.length),
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        fontFamily: "Alegreya"),
+                        color: Colors.black, fontWeight: FontWeight.bold),
                     children: [
                       TextSpan(
                           text: searchlist[index].term.substring(query.length),
