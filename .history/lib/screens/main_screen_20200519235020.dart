@@ -1,6 +1,7 @@
 import 'dart:convert';
-import '../models/botmodel.dart';
-import '../screens/homepage.dart';
+import 'dart:ui';
+
+import 'package:botany_essential/models/botmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
@@ -39,19 +40,6 @@ class MainScreen extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           }
-          if (snapshot.hasError) {
-            return Text("Somethings Went Wrong Bro");
-          }
-          return Column(
-            children: <Widget>[
-              Text("This is Main Page "),
-              FlatButton(
-                child: Text('Homepage'),
-                onPressed: () =>
-                    Navigator.pushReplacementNamed(context, Homepage.routeName),
-              )
-            ],
-          );
         },
       ),
     );

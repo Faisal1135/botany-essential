@@ -34,14 +34,14 @@ class FavoritePage extends StatelessWidget {
                         context, DictItemScreen.routeName,
                         arguments: allBotList[index]),
                     leading: CircleAvatar(
-                      backgroundColor: Colors.blueGrey,
+                      backgroundColor: Colors.pink,
                       radius: 30,
                       child: Hero(
                         tag: "${allBotList[index].id}",
                         child: FaIcon(
                           FontAwesomeIcons.tree,
                           color: Colors.green,
-                          size: 30,
+                          size: 20,
                         ),
                       ),
                     ),

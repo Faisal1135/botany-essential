@@ -20,29 +20,28 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('Botany essential'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                showSearch(
-                  context: context,
-                  delegate: Searchbar(),
-                );
-              },
-            ),
-          ],
-        ),
-        drawer: AppDrawer(),
-        body: ValueListenableBuilder(
-          valueListenable: Hive.box<Botmodel>(kbotBox).listenable(),
-          builder: (BuildContext context, Box<Botmodel> value, Widget child) {
-            List<Botmodel> allBotData = value.values.toList();
-            return SingelListTile(allBotData: allBotData);
-          },
-        ),
-      ),
+          appBar: AppBar(
+            title: Text('Botany essential'),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {
+                  showSearch(
+                    context: context,
+                    delegate: Searchbar(),
+                  );
+                },
+              ),
+            ],
+          ),
+          drawer: AppDrawer(),
+          body: ValueListenableBuilder(
+            valueListenable: Hive.box<Botmodel>(kbotBox).listenable(),
+            builder: (BuildContext context, Box<Botmodel> value, Widget child) {
+              List<Botmodel> allBotData = value.values.toList();
+              return SingelListTile(allBotData: allBotData);
+            },
+          )),
     );
   }
 

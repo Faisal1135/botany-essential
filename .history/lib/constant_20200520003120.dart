@@ -6,9 +6,9 @@ final ktermTextStyle =
     TextStyle(color: Colors.white, fontSize: 29, fontWeight: FontWeight.w700);
 
 final kMeaningStyle = TextStyle(
-  fontFamily: "ZillaSlab",
+  fontFamily: "Alegreya",
   color: Colors.white,
-  fontSize: 17,
+  fontSize: 18,
   fontStyle: FontStyle.italic,
 );
 

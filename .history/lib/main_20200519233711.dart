@@ -17,7 +17,6 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter<Botmodel>(BotmodelAdapter());
   await Hive.openBox<Botmodel>(kbotBox);
-  await Hive.openBox(kHiveBox);
   runApp(MyApp());
 }
 
@@ -36,7 +35,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.pink,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: getMetaData() ? MainScreen() : Homepage(),
+      initialRoute: '/',
       routes: {
         Homepage.routeName: (context) => Homepage(),
         ALphaListScreen.routeName: (context) => ALphaListScreen(),
@@ -46,9 +45,5 @@ class MyApp extends StatelessWidget {
         DictItemScreen.routeName: (context) => DictItemScreen(),
       },
     );
-  }
-
-  bool getMetaData() {
-    return Hive.box(kHiveBox).get("isLoaded") == null;
   }
 }

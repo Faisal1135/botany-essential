@@ -1,4 +1,3 @@
-import 'package:botany_essential/screens/dictonary_details.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../constant.dart';
@@ -30,20 +29,9 @@ class FavoritePage extends StatelessWidget {
                 itemCount: allBotList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
-                    onTap: () => Navigator.pushNamed(
-                        context, DictItemScreen.routeName,
-                        arguments: allBotList[index]),
                     leading: CircleAvatar(
-                      backgroundColor: Colors.blueGrey,
                       radius: 30,
-                      child: Hero(
-                        tag: "${allBotList[index].id}",
-                        child: FaIcon(
-                          FontAwesomeIcons.tree,
-                          color: Colors.green,
-                          size: 30,
-                        ),
-                      ),
+                      child: FaIcon(FontAwesomeIcons.tree),
                     ),
                     title: Text(allBotList[index].term),
                     subtitle: Text(

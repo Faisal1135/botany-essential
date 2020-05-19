@@ -41,7 +41,7 @@ class FavoritePage extends StatelessWidget {
                         child: FaIcon(
                           FontAwesomeIcons.tree,
                           color: Colors.green,
-                          size: 30,
+                          size: 20,
                         ),
                       ),
                     ),

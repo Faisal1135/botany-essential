@@ -119,9 +119,9 @@ class DictItemScreen extends StatelessWidget {
                                             padding: EdgeInsets.symmetric(
                                                 horizontal: 6),
                                             child: GFButton(
-                                              size: GFSize.MEDIUM,
+                                              type: GFButtonType.outline2x,
                                               shape: GFButtonShape.pills,
-                                              color: Colors.pink,
+                                              color: Colors.amber,
                                               onPressed: () {
                                                 final arg =
                                                     Hive.box<Botmodel>(kbotBox)

@@ -9,7 +9,7 @@ class HelperFunction {
 
     var bot = botbox.get(term);
     bot.isFavorite = !bot.isFavorite;
-    await botbox.put(term, bot);
+    botbox.put(term, bot);
   }
 
   static List<Botmodel> findWithAlpha(String alpha) {
