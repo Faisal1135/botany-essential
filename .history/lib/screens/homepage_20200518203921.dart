@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:botany_essential/widgets/my_drawer.dart';
-
-import '../widgets/singel_Iist_item.dart';
+import 'package:botany_essential/screens/dictonary_details.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:alphabet_list_scroll_view/alphabet_list_scroll_view.dart';
 import '../constant.dart';
 import '../models/botmodel.dart';
 import '../screens/search_bar.dart';
@@ -55,7 +55,6 @@ class _HomepageState extends State<Homepage> {
             ),
           ],
         ),
-        drawer: AppDrawer(),
         body: FutureBuilder(
           future: loadDictonaryFromJson(),
           builder:
@@ -74,7 +73,45 @@ class _HomepageState extends State<Homepage> {
               builder:
                   (BuildContext context, Box<Botmodel> value, Widget child) {
                 List<Botmodel> allBotData = value.values.toList();
-                return SingelListTile(allBotData: allBotData);
+                return ListView(children: [
+                  AlphabetListScrollView(
+                    showPreview: true,
+                    strList: allBotData.map((bot) => bot.term).toList(),
+                    indexedHeight: (i) => 80,
+                    itemBuilder: (BuildContext context, int index) => ListTile(
+                      onTap: () => Navigator.pushNamed(
+                          context, DictItemScreen.routeName,
+                          arguments: allBotData[index]),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.lightGreen,
+                        radius: 20,
+                        child: Hero(
+                          tag: "${allBotData[index].id}",
+                          child: FaIcon(
+                            FontAwesomeIcons.tree,
+                            color: Colors.green,
+                            size: 23,
+                          ),
+                        ),
+                      ),
+                      title: Text(allBotData[index].term),
+                      // subtitle: Text(
+                      //   allBotData[index].meaning,
+                      //   maxLines: 4,
+                      // ),
+                      // trailing: allBotData[index].isFavorite
+                      //     ? IconButton(
+                      //         icon: Icon(Icons.favorite),
+                      //         onPressed: () async =>
+                      //             await togglefavorite(index))
+                      //     : IconButton(
+                      //         icon: Icon(Icons.favorite_border),
+                      //         onPressed: () async {
+                      //           await togglefavorite(index);
+                      //         }),
+                    ),
+                  ),
+                ]);
               },
             );
             // return Text(snapshot.data.first.toMap().toString());
@@ -84,23 +121,20 @@ class _HomepageState extends State<Homepage> {
     );
   }
 
-//   Future<void> togglefavorite(int index) async {
-//     final botbox = Hive.box<Botmodel>(kbotBox);
-//     final key = botbox.keyAt(index);
-//     final bot = botbox.get(key);
-//     if (bot.isFavorite) {
-//       bot.isFavorite = false;
-//     } else {
-//       bot.isFavorite = true;
-//     }
-//     await botbox.put(key, bot);
-//   }
-// }
+  Future<void> togglefavorite(int index) async {
+    final botbox = Hive.box<Botmodel>(kbotBox);
+    final key = botbox.keyAt(index);
+    final bot = botbox.get(key);
+    if (bot.isFavorite) {
+      bot.isFavorite = false;
+    } else {
+      bot.isFavorite = true;
+    }
+    await botbox.put(key, bot);
+  }
+}
 
-// ListView.builder(
-//                   itemCount: allBotData.length,
-//                   itemBuilder: (BuildContext context, int index) {
-//                     return ListTile(
+// ListTile(
 //                       onTap: () => Navigator.pushNamed(
 //                           context, DictItemScreen.routeName,
 //                           arguments: allBotData[index]),
@@ -132,57 +166,3 @@ class _HomepageState extends State<Homepage> {
 //                                 await togglefavorite(index);
 //                               }),
 //                     );
-//                   },
-//                 );
-
-}
-
-// class SingelListTile extends StatelessWidget {
-//   const SingelListTile({
-//     Key key,
-//     @required this.allBotData,
-//   }) : super(key: key);
-
-//   final List<Botmodel> allBotData;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.builder(
-//       itemCount: allBotData.length,
-//       itemBuilder: (BuildContext context, int index) {
-//         return ListTile(
-//           onTap: () => Navigator.pushNamed(
-//               context, DictItemScreen.routeName,
-//               arguments: allBotData[index]),
-//           leading: CircleAvatar(
-//             backgroundColor: Colors.lightGreen,
-//             radius: 30,
-//             child: Hero(
-//               tag: "${allBotData[index].id}",
-//               child: FaIcon(
-//                 FontAwesomeIcons.tree,
-//                 color: Colors.green,
-//                 size: 23,
-//               ),
-//             ),
-//           ),
-//           title: Text(allBotData[index].term),
-//           subtitle: Text(
-//             allBotData[index].meaning,
-//             maxLines: 4,
-//           ),
-//           trailing: allBotData[index].isFavorite
-//               ? IconButton(
-//                   icon: Icon(Icons.favorite),
-//                   onPressed: () async =>
-//                       await togglefavorite(index))
-//               : IconButton(
-//                   icon: Icon(Icons.favorite_border),
-//                   onPressed: () async {
-//                     await togglefavorite(index);
-//                   }),
-//         );
-//       },
-//     );
-//   }
-// }

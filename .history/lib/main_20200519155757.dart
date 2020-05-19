@@ -1,7 +1,6 @@
 import 'package:botany_essential/screens/alpha_list.dart';
 import 'package:botany_essential/screens/main_screen.dart';
 import 'package:botany_essential/screens/show_list_of_alpha.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import './constant.dart';
 import './models/botmodel.dart';
@@ -27,9 +26,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Botany Essential',
       theme: ThemeData(
-        canvasColor: Colors.lightGreen.shade100,
-        textTheme: ThemeData.light().textTheme.copyWith(
-            bodyText1: GoogleFonts.zillaSlab(), bodyText2: kMeaningStyle),
+        canvasColor: Colors.lightGreen,
+        textTheme: ThemeData.dark().textTheme,
         primarySwatch: Colors.pink,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),

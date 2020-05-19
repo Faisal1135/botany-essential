@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:botany_essential/widgets/my_drawer.dart';
-
 import '../widgets/singel_Iist_item.dart';
 import '../constant.dart';
 import '../models/botmodel.dart';
@@ -55,7 +53,6 @@ class _HomepageState extends State<Homepage> {
             ),
           ],
         ),
-        drawer: AppDrawer(),
         body: FutureBuilder(
           future: loadDictonaryFromJson(),
           builder:

@@ -29,7 +29,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         canvasColor: Colors.lightGreen.shade100,
         textTheme: ThemeData.light().textTheme.copyWith(
-            bodyText1: GoogleFonts.zillaSlab(), bodyText2: kMeaningStyle),
+            bodyText1: GoogleFonts.zillaSlab(),
+            bodyText2:
+                GoogleFonts.zillaSlab(textStyle: TextStyle(fontSize: 20))),
         primarySwatch: Colors.pink,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
