@@ -1,4 +1,5 @@
 import 'package:botany_essential/screens/alpha_list.dart';
+import 'package:botany_essential/screens/history_screen.dart';
 import 'package:botany_essential/screens/main_screen.dart';
 import 'package:botany_essential/screens/show_list_of_alpha.dart';
 import './screens/favorite_page.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         ListAccordingToaAlpha.routeName: (context) => ListAccordingToaAlpha(),
         MainScreen.routeName: (context) => MainScreen(),
         DictItemScreen.routeName: (context) => DictItemScreen(),
+        HistoryPage.routeName: (context) => HistoryPage(),
       },
     );
   }

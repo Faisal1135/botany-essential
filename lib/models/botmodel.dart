@@ -20,11 +20,15 @@ class Botmodel {
   @HiveField(4)
   bool isFavorite;
 
+  @HiveField(5)
+  bool isHistory;
+
   Botmodel(
       {this.term,
       this.meaning,
       this.innerLink,
       this.id,
+      this.isHistory = false,
       this.isFavorite = false});
 
   Botmodel.fromJson(Map<String, dynamic> json)

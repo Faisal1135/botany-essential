@@ -8,13 +8,17 @@ class SingelListTile extends StatelessWidget {
   const SingelListTile({
     Key key,
     @required this.allBotData,
+    this.primary,
   }) : super(key: key);
 
   final List<Botmodel> allBotData;
+  final bool primary;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      primary: primary == null,
+      shrinkWrap: primary != null,
       itemCount: allBotData.length,
       itemBuilder: (BuildContext context, int index) {
         return ListTile(

@@ -1,5 +1,5 @@
-import '../models/botmodel.dart';
 import 'package:hive/hive.dart';
+import '../models/botmodel.dart';
 
 import '../constant.dart';
 
@@ -18,5 +18,12 @@ class HelperFunction {
         .where((bot) => bot.term.toLowerCase().startsWith(alpha))
         .toList();
     return startsWithAlpha;
+  }
+
+  static Future<void> addToHistory(String term) async {
+    final botbox = Hive.box<Botmodel>(kbotBox);
+    var botitem = botbox.get(term);
+    botitem.isHistory = true;
+    await botbox.put(term, botitem);
   }
 }

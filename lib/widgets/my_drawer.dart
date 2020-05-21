@@ -1,5 +1,6 @@
-import 'package:botany_essential/screens/alpha_list.dart';
 import 'package:flutter/material.dart';
+import '../screens/alpha_list.dart';
+import '../screens/history_screen.dart';
 import '../screens/favorite_page.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -25,6 +26,12 @@ class AppDrawer extends StatelessWidget {
             text: "Favorite",
             onTap: () =>
                 Navigator.pushReplacementNamed(context, FavoritePage.routeName),
+          ),
+          _createDrawerItem(
+            icon: Icons.history,
+            text: "History",
+            onTap: () =>
+                Navigator.pushReplacementNamed(context, HistoryPage.routeName),
           ),
         ],
       ),

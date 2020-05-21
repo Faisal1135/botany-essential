@@ -113,8 +113,11 @@ class DictItemScreen extends StatelessWidget {
                         children: <Widget>[
                           dict.innerLink == null
                               ? Container()
-                              : Padding(
+                              : Container(
+                                  // color: Colors.blueGrey,
+                                  // width: double.infinity,
                                   padding: const EdgeInsets.all(8.0),
+                                  margin: const EdgeInsets.only(top: 8.0),
                                   child: Wrap(
                                     children: dict.innerLink
                                         .map(

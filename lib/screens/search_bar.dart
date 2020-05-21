@@ -1,9 +1,10 @@
-import 'package:botany_essential/constant.dart';
-import 'package:botany_essential/models/botmodel.dart';
-import 'package:botany_essential/screens/dictonary_details.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
+import '../constant.dart';
+import '../helper/helper_function.dart';
+import '../models/botmodel.dart';
+import '../screens/dictonary_details.dart';
 
 class Searchbar extends SearchDelegate<String> {
   @override
@@ -41,8 +42,10 @@ class Searchbar extends SearchDelegate<String> {
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
                 onTap: () => Navigator.pushNamed(
-                    context, DictItemScreen.routeName,
-                    arguments: searchlist[index]),
+                  context,
+                  DictItemScreen.routeName,
+                  arguments: searchlist[index],
+                ),
                 leading: Icon(Icons.spa),
                 title: RichText(
                   text: TextSpan(
@@ -75,9 +78,11 @@ class Searchbar extends SearchDelegate<String> {
             itemCount: searchlist.length,
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
-                onTap: () => Navigator.pushNamed(
-                    context, DictItemScreen.routeName,
-                    arguments: searchlist[index]),
+                onTap: () async {
+                  await HelperFunction.addToHistory(searchlist[index].term);
+                  Navigator.pushNamed(context, DictItemScreen.routeName,
+                      arguments: searchlist[index]);
+                },
                 leading: Hero(
                   transitionOnUserGestures: true,
                   tag: "${searchlist[index].id}",
