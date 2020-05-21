@@ -12,7 +12,7 @@ class ListAccordingToaAlpha extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Title'),
+        title: Text("${allbotList.first.term[0]} -List"),
       ),
       body: SafeArea(
         child: SingelListTile(allBotData: allbotList),

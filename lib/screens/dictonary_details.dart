@@ -64,10 +64,13 @@ class DictItemScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          FittedBox(
-                            child: Text(
-                              dict.term,
-                              style: ktermTextStyle,
+                          Hero(
+                            tag: "$dict.term",
+                            child: FittedBox(
+                              child: Text(
+                                dict.term,
+                                style: ktermTextStyle,
+                              ),
                             ),
                           ),
                         ],
@@ -130,7 +133,9 @@ class DictItemScreen extends StatelessWidget {
                                                     DictItemScreen.routeName,
                                                     arguments: arg);
                                               },
-                                              child: Text(link),
+                                              child: Hero(
+                                                  tag: "$link",
+                                                  child: Text(link)),
                                             ),
                                           ),
                                         )
@@ -174,41 +179,3 @@ class DictItemScreen extends StatelessWidget {
     );
   }
 }
-
-// Text(
-//   dict.term,
-//   textAlign: TextAlign.center,
-// ),
-// IconButton(
-//     icon: dict.isFavorite
-//         ? Icon(Icons.favorite)
-//         : Icon(Icons.favorite_border),
-//     onPressed: () async {
-//       final botobj = value.get(dict.term);
-//       botobj.isFavorite = !botobj.isFavorite;
-//       await value.put(botobj.term, botobj);
-//     }),
-// SizedBox(height: 20),
-// Container(
-//   child: Text(dict.meaning),
-//   padding: const EdgeInsets.all(16),
-// ),
-// dict.innerLink == null
-//     ? Container()
-//     : Column(
-//         children: dict.innerLink
-//             .map(
-//               (link) => FlatButton(
-//                 color: Colors.amber,
-//                 onPressed: () {
-//                   final arg =
-//                       Hive.box<Botmodel>(kbotBox).get(link);
-//                   Navigator.pushNamed(
-//                       context, DictItemScreen.routeName,
-//                       arguments: arg);
-//                 },
-//                 child: Text(link),
-//               ),
-//             )
-//             .toList(),
-//       ),

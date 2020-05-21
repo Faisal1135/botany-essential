@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 const String kbotBox = "botany-box";
 const String kHiveBox = "meta-data";
-final ktermTextStyle =
-    TextStyle(color: Colors.white, fontSize: 29, fontWeight: FontWeight.w700);
+final ktermTextStyle = TextStyle(
+    color: Colors.white,
+    fontSize: 29,
+    fontWeight: FontWeight.w700,
+    fontFamily: "ZillaSlab");
 
 final kMeaningStyle = TextStyle(
   fontFamily: "ZillaSlab",

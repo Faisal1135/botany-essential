@@ -1,4 +1,5 @@
-import 'package:botany_essential/screens/dictonary_details.dart';
+import '../screens/dictonary_details.dart';
+import '../widgets/my_drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../constant.dart';
@@ -14,55 +15,72 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('FovoriteList'),
-      ),
+      drawer: AppDrawer(),
       body: ValueListenableBuilder(
         valueListenable: Hive.box<Botmodel>(kbotBox).listenable(),
         builder: (BuildContext context, Box<Botmodel> value, Widget child) {
           final allBotList =
               value.values.where((bot) => bot.isFavorite == true).toList();
-          return ListView(
-            children: <Widget>[
-              ListView.builder(
-                primary: false,
-                shrinkWrap: true,
-                itemCount: allBotList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    onTap: () => Navigator.pushNamed(
-                        context, DictItemScreen.routeName,
-                        arguments: allBotList[index]),
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.blueGrey,
-                      radius: 30,
-                      child: Hero(
-                        tag: "${allBotList[index].id}",
-                        child: FaIcon(
-                          FontAwesomeIcons.tree,
-                          color: Colors.green,
-                          size: 30,
+          return CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBar(
+                expandedHeight: 200,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  title: Text(
+                    "Your Favorite",
+                    style: ktermTextStyle,
+                  ),
+                  background: Container(
+                      child: Icon(
+                    Icons.favorite,
+                    size: 100,
+                    color: Colors.amber,
+                  )),
+                ),
+              ),
+              SliverList(
+                  delegate: SliverChildListDelegate([
+                ListView.builder(
+                  primary: false,
+                  shrinkWrap: true,
+                  itemCount: allBotList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                      onTap: () => Navigator.pushNamed(
+                          context, DictItemScreen.routeName,
+                          arguments: allBotList[index]),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.blueGrey,
+                        radius: 30,
+                        child: Hero(
+                          tag: "${allBotList[index].id}",
+                          child: FaIcon(
+                            FontAwesomeIcons.tree,
+                            color: Colors.green,
+                            size: 30,
+                          ),
                         ),
                       ),
-                    ),
-                    title: Text(allBotList[index].term),
-                    subtitle: Text(
-                      allBotList[index].meaning,
-                      maxLines: 4,
-                    ),
-                    trailing: IconButton(
-                      icon: allBotList[index].isFavorite
-                          ? Icon(Icons.favorite)
-                          : Icon(Icons.favorite_border),
-                      onPressed: () async {
-                        var item = value.get(allBotList[index].term);
-                        item.isFavorite = !item.isFavorite;
-                        await value.put(allBotList[index].term, item);
-                      },
-                    ),
-                  );
-                },
-              ),
+                      title: Text(allBotList[index].term),
+                      subtitle: Text(
+                        allBotList[index].meaning,
+                        maxLines: 4,
+                      ),
+                      trailing: IconButton(
+                        icon: allBotList[index].isFavorite
+                            ? Icon(Icons.favorite)
+                            : Icon(Icons.favorite_border),
+                        onPressed: () async {
+                          var item = value.get(allBotList[index].term);
+                          item.isFavorite = !item.isFavorite;
+                          await value.put(allBotList[index].term, item);
+                        },
+                      ),
+                    );
+                  },
+                ),
+              ]))
             ],
           );
         },
@@ -70,3 +88,43 @@ class FavoritePage extends StatelessWidget {
     );
   }
 }
+
+// ListView.builder(
+//                 primary: false,
+//                 shrinkWrap: true,
+//                 itemCount: allBotList.length,
+//                 itemBuilder: (BuildContext context, int index) {
+//                   return ListTile(
+//                     onTap: () => Navigator.pushNamed(
+//                         context, DictItemScreen.routeName,
+//                         arguments: allBotList[index]),
+//                     leading: CircleAvatar(
+//                       backgroundColor: Colors.blueGrey,
+//                       radius: 30,
+//                       child: Hero(
+//                         tag: "${allBotList[index].id}",
+//                         child: FaIcon(
+//                           FontAwesomeIcons.tree,
+//                           color: Colors.green,
+//                           size: 30,
+//                         ),
+//                       ),
+//                     ),
+//                     title: Text(allBotList[index].term),
+//                     subtitle: Text(
+//                       allBotList[index].meaning,
+//                       maxLines: 4,
+//                     ),
+//                     trailing: IconButton(
+//                       icon: allBotList[index].isFavorite
+//                           ? Icon(Icons.favorite)
+//                           : Icon(Icons.favorite_border),
+//                       onPressed: () async {
+//                         var item = value.get(allBotList[index].term);
+//                         item.isFavorite = !item.isFavorite;
+//                         await value.put(allBotList[index].term, item);
+//                       },
+//                     ),
+//                   );
+//                 },
+//               ),

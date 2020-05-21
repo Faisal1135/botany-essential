@@ -12,18 +12,19 @@ class AppDrawer extends StatelessWidget {
           _createDrawerItem(
             icon: Icons.home,
             text: "Full Dicotary",
-            onTap: () => Navigator.pushNamed(context, '/'),
+            onTap: () => Navigator.pushReplacementNamed(context, '/'),
           ),
           _createDrawerItem(
             icon: Icons.text_format,
             text: "Alphabetic order",
-            onTap: () =>
-                Navigator.pushNamed(context, ALphaListScreen.routeName),
+            onTap: () => Navigator.pushReplacementNamed(
+                context, ALphaListScreen.routeName),
           ),
           _createDrawerItem(
             icon: Icons.favorite,
             text: "Favorite",
-            onTap: () => Navigator.pushNamed(context, FavoritePage.routeName),
+            onTap: () =>
+                Navigator.pushReplacementNamed(context, FavoritePage.routeName),
           ),
         ],
       ),
@@ -57,10 +58,23 @@ class AppDrawer extends StatelessWidget {
     return ListTile(
       title: Row(
         children: <Widget>[
-          Icon(icon),
+          Icon(
+            icon,
+            color: Colors.green,
+          ),
+          SizedBox(
+            width: 10,
+          ),
           Padding(
             padding: EdgeInsets.only(left: 8.0),
-            child: Text(text),
+            child: Text(
+              text,
+              style: const TextStyle(
+                  fontFamily: "ZillaSlab",
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  color: Colors.black),
+            ),
           )
         ],
       ),

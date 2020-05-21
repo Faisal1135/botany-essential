@@ -34,28 +34,31 @@ class Searchbar extends SearchDelegate<String> {
         .values
         .where((bot) => bot.term.toLowerCase().startsWith(query.toLowerCase()))
         .toList();
-    return ListView.builder(
-      itemCount: searchlist.length,
-      itemBuilder: (BuildContext context, int index) {
-        return ListTile(
-          onTap: () => Navigator.pushNamed(context, DictItemScreen.routeName,
-              arguments: searchlist[index]),
-          leading: Icon(Icons.spa),
-          title: RichText(
-            text: TextSpan(
-              text: searchlist[index].term.substring(0, query.length),
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-              children: [
-                TextSpan(
-                    text: searchlist[index].term.substring(query.length),
-                    style: TextStyle(color: Colors.grey))
-              ],
-            ),
-          ),
-        );
-      },
-    );
+    return searchlist.isEmpty
+        ? Center(child: Text("No content Found"))
+        : ListView.builder(
+            itemCount: searchlist.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                onTap: () => Navigator.pushNamed(
+                    context, DictItemScreen.routeName,
+                    arguments: searchlist[index]),
+                leading: Icon(Icons.spa),
+                title: RichText(
+                  text: TextSpan(
+                    text: searchlist[index].term.substring(0, query.length),
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                    children: [
+                      TextSpan(
+                          text: searchlist[index].term.substring(query.length),
+                          style: TextStyle(color: Colors.grey))
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
   }
 
   @override
@@ -75,7 +78,18 @@ class Searchbar extends SearchDelegate<String> {
                 onTap: () => Navigator.pushNamed(
                     context, DictItemScreen.routeName,
                     arguments: searchlist[index]),
-                leading: FaIcon(FontAwesomeIcons.leaf),
+                leading: Hero(
+                  transitionOnUserGestures: true,
+                  tag: "${searchlist[index].id}",
+                  child: CircleAvatar(
+                    child: FaIcon(
+                      FontAwesomeIcons.tree,
+                      color: Colors.green,
+                    ),
+                    radius: 20,
+                    backgroundColor: Colors.amber,
+                  ),
+                ),
                 title: RichText(
                   text: TextSpan(
                     text: searchlist[index].term.substring(0, query.length),
