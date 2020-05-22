@@ -35,7 +35,7 @@ class DictItemScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Colors.green.shade800,
+      backgroundColor: Color(0x8974d600), //Colors.green.shade800,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -81,11 +81,11 @@ class DictItemScreen extends StatelessWidget {
                         child: IconButton(
                             icon: dict.isFavorite
                                 ? Icon(
-                                    Icons.favorite,
+                                    Icons.star,
                                     color: Colors.amber,
                                     size: 30,
                                   )
-                                : Icon(Icons.favorite_border,
+                                : Icon(Icons.star_border,
                                     color: Colors.amber, size: 30),
                             onPressed: () async {
                               final botobj = value.get(dict.term);
@@ -128,7 +128,8 @@ class DictItemScreen extends StatelessWidget {
                                             child: GFButton(
                                               size: GFSize.MEDIUM,
                                               shape: GFButtonShape.pills,
-                                              color: Colors.pink,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
                                               onPressed: () {
                                                 final arg =
                                                     Hive.box<Botmodel>(kbotBox)
@@ -155,6 +156,10 @@ class DictItemScreen extends StatelessWidget {
                                   'Meaning',
                                   style: kMeaningStyle,
                                   textAlign: TextAlign.start,
+                                ),
+                                Divider(
+                                  thickness: 1,
+                                  color: Colors.white,
                                 ),
                                 SizedBox(
                                   height: 30,

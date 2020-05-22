@@ -25,14 +25,14 @@ class SingelListTile extends StatelessWidget {
           onTap: () => Navigator.pushNamed(context, DictItemScreen.routeName,
               arguments: allBotData[index]),
           leading: CircleAvatar(
-            backgroundColor: Colors.lightGreen,
+            backgroundColor: Color(0xff00e278),
             radius: 30,
             child: Hero(
               tag: "${allBotData[index].id}",
               child: FaIcon(
                 FontAwesomeIcons.tree,
-                color: Colors.green,
-                size: 23,
+                color: Color(0xffADFF00),
+                size: 30,
               ),
             ),
           ),
@@ -43,8 +43,8 @@ class SingelListTile extends StatelessWidget {
           ),
           trailing: IconButton(
             icon: allBotData[index].isFavorite
-                ? Icon(Icons.favorite)
-                : Icon(Icons.favorite_border),
+                ? Icon(Icons.star, color: Colors.amber)
+                : Icon(Icons.star_border, color: Colors.amber),
             onPressed: () async {
               await HelperFunction.togglefavorite(allBotData[index].term);
             },

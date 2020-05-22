@@ -23,9 +23,12 @@ class HistoryPage extends StatelessWidget {
                 expandedHeight: 200,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
-                    "Your History",
-                    style: ktermTextStyle,
+                  title: Hero(
+                    tag: "history",
+                    child: Text(
+                      "Your History",
+                      style: ktermTextStyle,
+                    ),
                   ),
                   background: Container(
                     child: Icon(
@@ -48,9 +51,6 @@ class HistoryPage extends StatelessWidget {
                         primary: true,
                       ),
                     ),
-                    SizedBox(
-                      height: 500,
-                    )
                   ],
                 ),
               )

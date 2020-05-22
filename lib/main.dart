@@ -30,11 +30,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Botany Essential',
       theme: ThemeData(
-        canvasColor: Colors.lightGreen.shade100,
+        canvasColor: Colors.lightGreen.shade100, //Colors.lightGreen.shade100,
         textTheme: ThemeData.light()
             .textTheme
             .copyWith(bodyText2: TextStyle(fontFamily: "Alegreya")),
-        primarySwatch: Colors.pink,
+        primaryColor: Color(0xff028900), //Color(0xffd4344c), //,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: getMetaData() ? MainScreen() : MainHomePage(),

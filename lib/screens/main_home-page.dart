@@ -1,6 +1,9 @@
-import 'package:botany_essential/constant.dart';
-import 'package:botany_essential/models/botmodel.dart';
-import 'package:botany_essential/screens/search_bar.dart';
+import '../constant.dart';
+import '../models/botmodel.dart';
+import '../screens/dictonary_details.dart';
+import '../screens/history_screen.dart';
+import '../screens/search_bar.dart';
+import 'package:getflutter/getflutter.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -14,6 +17,7 @@ class MainHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         titleSpacing: 1,
@@ -33,7 +37,12 @@ class MainHomePage extends StatelessWidget {
                 onTap: () =>
                     showSearch(context: context, delegate: Searchbar()),
                 child: Container(
-                  color: Colors.pink,
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(25),
+                        bottomRight: Radius.circular(25),
+                      )),
                   child: Container(
                     height: 50,
                     margin: EdgeInsets.all(20),
@@ -59,10 +68,44 @@ class MainHomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              InkWell(
+                onTap: () =>
+                    Navigator.pushNamed(context, HistoryPage.routeName),
+                child: Container(
+                  // color: Colors.lightGreen.shade400,
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.history,
+                        color: Colors.lime.shade900,
+                      ),
+                      SizedBox(width: 10),
+                      Hero(
+                        tag: "history",
+                        child: Text(
+                          'History',
+                          style: const TextStyle(
+                            fontFamily: "ZillaSlab",
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Spacer(),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.black,
+                      )
+                    ],
+                  ),
+                ),
+              ),
               Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    color: Colors.lightGreen.shade300),
+                    color: Color(0xffE8EBF1)),
                 padding: EdgeInsets.all(10),
                 margin: EdgeInsets.all(10),
                 child: Column(
@@ -71,55 +114,43 @@ class MainHomePage extends StatelessWidget {
                       .toList()
                       .getRange(0, 5)
                       .map(
-                        (val) => Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 5),
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Text(val.term),
-                                  Spacer(),
-                                  Icon(Icons.star_border)
-                                ],
-                              ),
-                              Divider()
-                            ],
+                        (val) => InkWell(
+                          onTap: () async => await Navigator.pushNamed(
+                              context, DictItemScreen.routeName,
+                              arguments: value.get(val.term)),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 5),
+                            child: Column(
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    Text(val.term),
+                                    Spacer(),
+                                    Icon(Icons.star_border)
+                                  ],
+                                ),
+                                Divider()
+                              ],
+                            ),
                           ),
                         ),
                       )
-                      .toList()
-                        ..insert(
-                          0,
-                          Container(
-                              color: Colors.lightGreen.shade400,
-                              margin: EdgeInsets.symmetric(vertical: 10),
-                              padding: EdgeInsets.all(5),
-                              child: Row(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.history,
-                                    color: Colors.lime.shade900,
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    'History',
-                                    style: const TextStyle(
-                                      fontFamily: "ZillaSlab",
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Colors.white,
-                                  )
-                                ],
-                              )),
-                        ),
+                      .toList(),
                 ),
-              )
+              ),
+              GFCard(
+                boxFit: BoxFit.cover,
+                image: Image.asset('assets/images/plant2.jpg'),
+                title: GFListTile(
+                    title: Text('Card Title'),
+                    icon: GFIconButton(
+                      onPressed: null,
+                      icon: Icon(Icons.star_border),
+                      type: GFButtonType.transparent,
+                    )),
+                content: Text("Some quick example text to build on the card"),
+              ),
             ],
           );
         },

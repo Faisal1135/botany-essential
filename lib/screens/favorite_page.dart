@@ -28,59 +28,62 @@ class FavoritePage extends StatelessWidget {
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
-                    "Your Favorite",
+                    "Bookmarks",
                     style: ktermTextStyle,
                   ),
                   background: Container(
                       child: Icon(
-                    Icons.favorite,
+                    Icons.bookmark,
                     size: 100,
                     color: Colors.amber,
                   )),
                 ),
               ),
               SliverList(
-                  delegate: SliverChildListDelegate([
-                ListView.builder(
-                  primary: false,
-                  shrinkWrap: true,
-                  itemCount: allBotList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      onTap: () => Navigator.pushNamed(
-                          context, DictItemScreen.routeName,
-                          arguments: allBotList[index]),
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.blueGrey,
-                        radius: 30,
-                        child: Hero(
-                          tag: "${allBotList[index].id}",
-                          child: FaIcon(
-                            FontAwesomeIcons.tree,
-                            color: Colors.green,
-                            size: 30,
+                delegate: SliverChildListDelegate(
+                  [
+                    ListView.builder(
+                      primary: false,
+                      shrinkWrap: true,
+                      itemCount: allBotList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ListTile(
+                          onTap: () => Navigator.pushNamed(
+                              context, DictItemScreen.routeName,
+                              arguments: allBotList[index]),
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.blueGrey,
+                            radius: 30,
+                            child: Hero(
+                              tag: "${allBotList[index].id}",
+                              child: FaIcon(
+                                FontAwesomeIcons.tree,
+                                color: Colors.green,
+                                size: 30,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      title: Text(allBotList[index].term),
-                      subtitle: Text(
-                        allBotList[index].meaning,
-                        maxLines: 4,
-                      ),
-                      trailing: IconButton(
-                        icon: allBotList[index].isFavorite
-                            ? Icon(Icons.favorite)
-                            : Icon(Icons.favorite_border),
-                        onPressed: () async {
-                          var item = value.get(allBotList[index].term);
-                          item.isFavorite = !item.isFavorite;
-                          await value.put(allBotList[index].term, item);
-                        },
-                      ),
-                    );
-                  },
+                          title: Text(allBotList[index].term),
+                          subtitle: Text(
+                            allBotList[index].meaning,
+                            maxLines: 4,
+                          ),
+                          trailing: IconButton(
+                            icon: allBotList[index].isFavorite
+                                ? Icon(Icons.star, color: Colors.amber)
+                                : Icon(Icons.star_border, color: Colors.amber),
+                            onPressed: () async {
+                              var item = value.get(allBotList[index].term);
+                              item.isFavorite = !item.isFavorite;
+                              await value.put(allBotList[index].term, item);
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
-              ]))
+              )
             ],
           );
         },
