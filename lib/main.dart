@@ -1,5 +1,6 @@
 import 'package:botany_essential/screens/alpha_list.dart';
 import 'package:botany_essential/screens/history_screen.dart';
+import 'package:botany_essential/screens/main_home-page.dart';
 import 'package:botany_essential/screens/main_screen.dart';
 import 'package:botany_essential/screens/show_list_of_alpha.dart';
 import './screens/favorite_page.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.pink,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: getMetaData() ? MainScreen() : Homepage(),
+      home: getMetaData() ? MainScreen() : MainHomePage(),
       routes: {
         Homepage.routeName: (context) => Homepage(),
         ALphaListScreen.routeName: (context) => ALphaListScreen(),
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         MainScreen.routeName: (context) => MainScreen(),
         DictItemScreen.routeName: (context) => DictItemScreen(),
         HistoryPage.routeName: (context) => HistoryPage(),
+        MainHomePage.routeName: (context) => MainHomePage(),
       },
     );
   }

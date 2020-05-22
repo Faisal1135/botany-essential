@@ -1,3 +1,5 @@
+import 'package:botany_essential/screens/homepage.dart';
+import 'package:botany_essential/screens/main_home-page.dart';
 import 'package:flutter/material.dart';
 import '../screens/alpha_list.dart';
 import '../screens/history_screen.dart';
@@ -12,8 +14,15 @@ class AppDrawer extends StatelessWidget {
           _createHeader(),
           _createDrawerItem(
             icon: Icons.home,
+            text: "Home",
+            onTap: () =>
+                Navigator.pushReplacementNamed(context, MainHomePage.routeName),
+          ),
+          _createDrawerItem(
+            icon: Icons.library_books,
             text: "Full Dicotary",
-            onTap: () => Navigator.pushReplacementNamed(context, '/'),
+            onTap: () =>
+                Navigator.pushReplacementNamed(context, Homepage.routeName),
           ),
           _createDrawerItem(
             icon: Icons.text_format,
@@ -22,7 +31,7 @@ class AppDrawer extends StatelessWidget {
                 context, ALphaListScreen.routeName),
           ),
           _createDrawerItem(
-            icon: Icons.favorite,
+            icon: Icons.bookmark,
             text: "Favorite",
             onTap: () =>
                 Navigator.pushReplacementNamed(context, FavoritePage.routeName),
@@ -54,6 +63,8 @@ class AppDrawer extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.green.shade700,
                       fontSize: 30.0,
+                      fontFamily: "ZillaSlab",
+                      fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.w700))),
         ],
       ),

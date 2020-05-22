@@ -65,7 +65,7 @@ class DictItemScreen extends StatelessWidget {
                             ),
                           ),
                           Hero(
-                            tag: "$dict.term",
+                            tag: "${dict.term}",
                             child: FittedBox(
                               child: Text(
                                 dict.term,
@@ -120,6 +120,7 @@ class DictItemScreen extends StatelessWidget {
                                   margin: const EdgeInsets.only(top: 8.0),
                                   child: Wrap(
                                     children: dict.innerLink
+                                        .toSet()
                                         .map(
                                           (link) => Container(
                                             padding: EdgeInsets.symmetric(
@@ -137,8 +138,9 @@ class DictItemScreen extends StatelessWidget {
                                                     arguments: arg);
                                               },
                                               child: Hero(
-                                                  tag: "$link",
-                                                  child: Text(link)),
+                                                tag: "$link",
+                                                child: Text(link),
+                                              ),
                                             ),
                                           ),
                                         )
