@@ -41,17 +41,31 @@ class Searchbar extends SearchDelegate<String> {
             itemCount: searchlist.length,
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
-                onTap: () => Navigator.pushNamed(
-                  context,
-                  DictItemScreen.routeName,
-                  arguments: searchlist[index],
+                onTap: () async {
+                  await HelperFunction.addToHistory(searchlist[index].term);
+                  Navigator.pushNamed(context, DictItemScreen.routeName,
+                      arguments: searchlist[index]);
+                },
+                leading: Hero(
+                  transitionOnUserGestures: true,
+                  tag: "${searchlist[index].id}",
+                  child: CircleAvatar(
+                    child: FaIcon(
+                      FontAwesomeIcons.tree,
+                      color: Colors.green,
+                    ),
+                    radius: 20,
+                    backgroundColor: Colors.amber,
+                  ),
                 ),
-                leading: Icon(Icons.spa),
                 title: RichText(
                   text: TextSpan(
                     text: searchlist[index].term.substring(0, query.length),
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        fontFamily: "Alegreya"),
                     children: [
                       TextSpan(
                           text: searchlist[index].term.substring(query.length),

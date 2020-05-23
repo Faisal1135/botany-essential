@@ -26,6 +26,7 @@ class DictItemScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var dict = ModalRoute.of(context).settings.arguments as Botmodel;
+    Size size = MediaQuery.of(context).size;
     if (dict == null) {
       dict = Botmodel(
           term: "No content",
@@ -59,7 +60,7 @@ class DictItemScreen extends StatelessWidget {
                             child: Container(
                               child: FaIcon(
                                 FontAwesomeIcons.tree,
-                                color: Colors.green,
+                                color: Colors.green.shade700,
                                 size: 100,
                               ),
                             ),
@@ -108,7 +109,7 @@ class DictItemScreen extends StatelessWidget {
                           topRight: Radius.circular(30),
                         ),
                       ),
-                      constraints: BoxConstraints(minHeight: 500),
+                      constraints: BoxConstraints(minHeight: size.height * 0.9),
                       child: Column(
                         children: <Widget>[
                           dict.innerLink == null

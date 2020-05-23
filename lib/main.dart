@@ -1,8 +1,11 @@
-import 'package:botany_essential/screens/alpha_list.dart';
-import 'package:botany_essential/screens/history_screen.dart';
-import 'package:botany_essential/screens/main_home-page.dart';
-import 'package:botany_essential/screens/main_screen.dart';
-import 'package:botany_essential/screens/show_list_of_alpha.dart';
+import 'package:botany_essential/screens/splash_screen.dart';
+import 'package:flutter/foundation.dart';
+
+import './screens/alpha_list.dart';
+import './screens/history_screen.dart';
+import './screens/main_home-page.dart';
+import './screens/main_screen.dart';
+import './screens/show_list_of_alpha.dart';
 import './screens/favorite_page.dart';
 
 import './constant.dart';
@@ -11,6 +14,7 @@ import './screens/dictonary_details.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:device_preview/device_preview.dart';
 
 import './screens/homepage.dart';
 
@@ -19,7 +23,12 @@ void main() async {
   Hive.registerAdapter<Botmodel>(BotmodelAdapter());
   await Hive.openBox<Botmodel>(kbotBox);
   await Hive.openBox(kHiveBox);
-  runApp(MyApp());
+  runApp(MyApp()
+      // DevicePreview(
+      //   enabled: !kReleaseMode,
+      //   builder: (context) => MyApp(),
+      // ),
+      );
 }
 
 class MyApp extends StatelessWidget {
@@ -37,9 +46,10 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xff028900), //Color(0xffd4344c), //,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: getMetaData() ? MainScreen() : MainHomePage(),
+      home: getMetaData() ? MainScreen() : SplashScreen(),
       routes: {
         Homepage.routeName: (context) => Homepage(),
+        SplashScreen.routeName: (context) => SplashScreen(),
         ALphaListScreen.routeName: (context) => ALphaListScreen(),
         FavoritePage.routeName: (context) => FavoritePage(),
         ListAccordingToaAlpha.routeName: (context) => ListAccordingToaAlpha(),

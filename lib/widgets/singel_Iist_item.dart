@@ -25,7 +25,7 @@ class SingelListTile extends StatelessWidget {
           onTap: () => Navigator.pushNamed(context, DictItemScreen.routeName,
               arguments: allBotData[index]),
           leading: CircleAvatar(
-            backgroundColor: Color(0xff00e278),
+            backgroundColor: const Color(0xff00e278),
             radius: 30,
             child: Hero(
               tag: "${allBotData[index].id}",

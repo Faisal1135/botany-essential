@@ -21,10 +21,10 @@ class _HomepageState extends State<Homepage> {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Botany essential'),
+          title: const Text('Botany essential'),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.search),
+              icon: const Icon(Icons.search),
               onPressed: () {
                 showSearch(
                   context: context,
@@ -45,106 +45,4 @@ class _HomepageState extends State<Homepage> {
       ),
     );
   }
-
-//   Future<void> togglefavorite(int index) async {
-//     final botbox = Hive.box<Botmodel>(kbotBox);
-//     final key = botbox.keyAt(index);
-//     final bot = botbox.get(key);
-//     if (bot.isFavorite) {
-//       bot.isFavorite = false;
-//     } else {
-//       bot.isFavorite = true;
-//     }
-//     await botbox.put(key, bot);
-//   }
-// }
-
-// ListView.builder(
-//                   itemCount: allBotData.length,
-//                   itemBuilder: (BuildContext context, int index) {
-//                     return ListTile(
-//                       onTap: () => Navigator.pushNamed(
-//                           context, DictItemScreen.routeName,
-//                           arguments: allBotData[index]),
-//                       leading: CircleAvatar(
-//                         backgroundColor: Colors.lightGreen,
-//                         radius: 30,
-//                         child: Hero(
-//                           tag: "${allBotData[index].id}",
-//                           child: FaIcon(
-//                             FontAwesomeIcons.tree,
-//                             color: Colors.green,
-//                             size: 23,
-//                           ),
-//                         ),
-//                       ),
-//                       title: Text(allBotData[index].term),
-//                       subtitle: Text(
-//                         allBotData[index].meaning,
-//                         maxLines: 4,
-//                       ),
-//                       trailing: allBotData[index].isFavorite
-//                           ? IconButton(
-//                               icon: Icon(Icons.favorite),
-//                               onPressed: () async =>
-//                                   await togglefavorite(index))
-//                           : IconButton(
-//                               icon: Icon(Icons.favorite_border),
-//                               onPressed: () async {
-//                                 await togglefavorite(index);
-//                               }),
-//                     );
-//                   },
-//                 );
-
 }
-
-// class SingelListTile extends StatelessWidget {
-//   const SingelListTile({
-//     Key key,
-//     @required this.allBotData,
-//   }) : super(key: key);
-
-//   final List<Botmodel> allBotData;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.builder(
-//       itemCount: allBotData.length,
-//       itemBuilder: (BuildContext context, int index) {
-//         return ListTile(
-//           onTap: () => Navigator.pushNamed(
-//               context, DictItemScreen.routeName,
-//               arguments: allBotData[index]),
-//           leading: CircleAvatar(
-//             backgroundColor: Colors.lightGreen,
-//             radius: 30,
-//             child: Hero(
-//               tag: "${allBotData[index].id}",
-//               child: FaIcon(
-//                 FontAwesomeIcons.tree,
-//                 color: Colors.green,
-//                 size: 23,
-//               ),
-//             ),
-//           ),
-//           title: Text(allBotData[index].term),
-//           subtitle: Text(
-//             allBotData[index].meaning,
-//             maxLines: 4,
-//           ),
-//           trailing: allBotData[index].isFavorite
-//               ? IconButton(
-//                   icon: Icon(Icons.favorite),
-//                   onPressed: () async =>
-//                       await togglefavorite(index))
-//               : IconButton(
-//                   icon: Icon(Icons.favorite_border),
-//                   onPressed: () async {
-//                     await togglefavorite(index);
-//                   }),
-//         );
-//       },
-//     );
-//   }
-// }

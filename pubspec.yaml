@@ -28,6 +28,8 @@ dependencies:
   getflutter: ^1.0.11
   uuid: ^2.0.4
   font_awesome_flutter: ^8.8.1
+  animated_text_kit: ^2.1.0
+  drawing_animation: ^0.1.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -38,6 +40,8 @@ dev_dependencies:
     sdk: flutter
   hive_generator:
   build_runner: ^1.10.0
+  device_preview: ^0.4.5
+  flutter_launcher_icons: "^0.7.3"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

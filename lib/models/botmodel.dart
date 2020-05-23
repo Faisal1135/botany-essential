@@ -36,6 +36,7 @@ class Botmodel {
         term = json["term"] as String,
         meaning = json["meaning"] as String,
         innerLink = json["inner_link"],
+        isHistory = false,
         isFavorite = false;
 
   Map toMap() {

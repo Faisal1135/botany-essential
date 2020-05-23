@@ -1,6 +1,6 @@
 import 'dart:convert';
+import 'package:botany_essential/widgets/splash.dart';
 import '../models/botmodel.dart';
-import '../screens/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
@@ -14,8 +14,11 @@ class MainScreen extends StatelessWidget {
     String path = "assets/json/final_dict.json";
     String content = await rootBundle.loadString(path);
     List jsonString = json.decode(content);
-    List<Botmodel> _botDict =
-        jsonString.map((item) => Botmodel.fromJson(item)).toList();
+    List<Botmodel> _botDict = jsonString
+        .map(
+          (item) => Botmodel.fromJson(item),
+        )
+        .toList();
 
     var _entries = Map<String, Botmodel>();
     _botDict.forEach((bot) {
@@ -23,14 +26,15 @@ class MainScreen extends StatelessWidget {
     });
     await Hive.box<Botmodel>(kbotBox).putAll(_entries);
     await Hive.box(kHiveBox).put("isLoaded", true);
+//    await Hive.box(kHiveBox).put("isLoaded", true);
   }
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    print(size.height);
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Botany essential'),
-      ),
+      backgroundColor: Colors.orangeAccent,
       body: FutureBuilder(
         future: loadDictonaryFromJson(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -42,16 +46,7 @@ class MainScreen extends StatelessWidget {
           if (snapshot.hasError) {
             return Text("Somethings Went Wrong Bro");
           }
-          return Column(
-            children: <Widget>[
-              Text("This is Main Page "),
-              FlatButton(
-                child: Text('Homepage'),
-                onPressed: () =>
-                    Navigator.pushReplacementNamed(context, Homepage.routeName),
-              )
-            ],
-          );
+          return SplashWidget();
         },
       ),
     );

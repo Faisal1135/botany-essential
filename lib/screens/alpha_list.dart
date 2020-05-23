@@ -81,21 +81,3 @@ class ALphaListScreen extends StatelessWidget {
     );
   }
 }
-// GridView(
-//         shrinkWrap: true,
-//         primary: false,
-//         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-//           maxCrossAxisExtent: 200,
-//           childAspectRatio: 3 / 2,
-//           crossAxisSpacing: 20,
-//           mainAxisSpacing: 20,
-//         ),
-//         padding: const EdgeInsets.all(16),
-//         children: kalphaList
-//             .map(
-//               (alpha) => Griditem(
-//                 title: alpha,
-//               ),
-//             )
-//             .toList(),
-//       ),
