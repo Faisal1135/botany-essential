@@ -20,7 +20,7 @@ class ALphaListScreen extends StatelessWidget {
             expandedHeight: size.height * 0.3,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-                title: Text(
+                title: const Text(
                   "Alphabetic Order",
                   textAlign: TextAlign.end,
                   style: const TextStyle(

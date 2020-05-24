@@ -1,5 +1,4 @@
-import 'package:botany_essential/screens/splash_screen.dart';
-import 'package:flutter/foundation.dart';
+import './screens/splash_screen.dart';
 
 import './screens/alpha_list.dart';
 import './screens/history_screen.dart';
@@ -7,14 +6,12 @@ import './screens/main_home-page.dart';
 import './screens/main_screen.dart';
 import './screens/show_list_of_alpha.dart';
 import './screens/favorite_page.dart';
-
 import './constant.dart';
 import './models/botmodel.dart';
 import './screens/dictonary_details.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:device_preview/device_preview.dart';
 
 import './screens/homepage.dart';
 
@@ -23,12 +20,7 @@ void main() async {
   Hive.registerAdapter<Botmodel>(BotmodelAdapter());
   await Hive.openBox<Botmodel>(kbotBox);
   await Hive.openBox(kHiveBox);
-  runApp(MyApp()
-      // DevicePreview(
-      //   enabled: !kReleaseMode,
-      //   builder: (context) => MyApp(),
-      // ),
-      );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
