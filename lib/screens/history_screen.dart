@@ -17,6 +17,14 @@ class HistoryPage extends StatelessWidget {
       body: ValueListenableBuilder(
         valueListenable: Hive.box<Botmodel>(kbotBox).listenable(),
         builder: (BuildContext context, Box<Botmodel> value, Widget child) {
+          List<Botmodel> gethistory() {
+            var histlist =
+                value.values.where((bot) => bot.isHistory == true).toList();
+            histlist.sort((a, b) => a.date.compareTo(b.date));
+            var sortedHistory = histlist.reversed.toList();
+            return sortedHistory;
+          }
+
           return CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
@@ -45,9 +53,7 @@ class HistoryPage extends StatelessWidget {
                   [
                     Container(
                       child: SingelListTile(
-                        allBotData: value.values
-                            .where((bot) => bot.isHistory == true)
-                            .toList(),
+                        allBotData: gethistory(),
                         primary: true,
                       ),
                     ),

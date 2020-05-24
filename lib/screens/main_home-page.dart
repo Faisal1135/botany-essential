@@ -37,8 +37,11 @@ class MainHomePage extends StatelessWidget {
         builder: (BuildContext context, Box<Botmodel> value, Widget child) {
           final randInt = Random.secure().nextInt(value.length);
           final randWord = value.getAt(randInt);
-          final historyItem =
-              value.values.where((bot) => bot.isHistory == true).toList();
+          var historyItem = value.values
+              .where((bot) => bot.isHistory == true)
+              .toList()
+                ..sort((a, b) => a.date.compareTo(b.date));
+          historyItem = historyItem.reversed.toList();
 
           List<Botmodel> getHistory() {
             if (historyItem.length == 0) {
@@ -49,8 +52,6 @@ class MainHomePage extends StatelessWidget {
             }
             return historyItem.sublist(0, 5);
           }
-
-          print(value.values.length);
 
           return ListView(
             children: <Widget>[

@@ -34,6 +34,7 @@ class DictItemScreen extends StatelessWidget {
           innerLink: [],
           isFavorite: false);
     }
+    print(dict.date);
 
     return Scaffold(
       backgroundColor: Color(0x8974d600), //Colors.green.shade800,

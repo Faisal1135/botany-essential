@@ -19,15 +19,15 @@ class BotmodelAdapter extends TypeAdapter<Botmodel> {
       meaning: fields[2] as String,
       innerLink: (fields[3] as List)?.cast<dynamic>(),
       id: fields[0] as String,
-      isFavorite: fields[4] as bool,
       isHistory: fields[5] as bool,
-    );
+      isFavorite: fields[4] as bool,
+    )..date = fields[6] as DateTime;
   }
 
   @override
   void write(BinaryWriter writer, Botmodel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -39,6 +39,8 @@ class BotmodelAdapter extends TypeAdapter<Botmodel> {
       ..writeByte(4)
       ..write(obj.isFavorite)
       ..writeByte(5)
-      ..write(obj.isHistory);
+      ..write(obj.isHistory)
+      ..writeByte(6)
+      ..write(obj.date);
   }
 }

@@ -24,6 +24,7 @@ class HelperFunction {
     final botbox = Hive.box<Botmodel>(kbotBox);
     var botitem = botbox.get(term);
     botitem.isHistory = true;
+    botitem.date = DateTime.now();
     await botbox.put(term, botitem);
   }
 }

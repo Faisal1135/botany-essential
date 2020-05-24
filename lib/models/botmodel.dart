@@ -23,6 +23,9 @@ class Botmodel {
   @HiveField(5)
   bool isHistory;
 
+  @HiveField(6)
+  DateTime date;
+
   Botmodel(
       {this.term,
       this.meaning,
@@ -36,6 +39,7 @@ class Botmodel {
         term = json["term"] as String,
         meaning = json["meaning"] as String,
         innerLink = json["inner_link"],
+        date = DateTime.now(),
         isHistory = false,
         isFavorite = false;
 
